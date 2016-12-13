@@ -15,8 +15,8 @@ import wad.domain.Account;
 import wad.domain.Permission;
 import wad.repository.AccountRepository;
 
-@Service
 @Component
+@Service
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private AccountRepository accountRepository;
