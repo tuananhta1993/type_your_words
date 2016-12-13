@@ -15,7 +15,6 @@ import wad.repository.AccountRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-
     @Autowired
     private AccountRepository accountRepository;
 
