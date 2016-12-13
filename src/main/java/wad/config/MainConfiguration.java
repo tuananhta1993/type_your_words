@@ -3,8 +3,11 @@ package wad.config;
 import java.net.URISyntaxException;
 import org.springframework.context.annotation.Configuration;
 import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @Configuration
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class MainConfiguration {
     public BasicDataSource dataSource() throws URISyntaxException {
         String dbUrl = System.getenv("JDBC_DATABASE_URL");
