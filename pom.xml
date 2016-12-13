@@ -70,7 +70,6 @@
                     <fork>true</fork>
                 </configuration>
             </plugin>
-            <!--
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>
@@ -89,7 +88,7 @@
                 <descriptorRefs>
                   <descriptorRef>jar-with-dependencies</descriptorRef>
                 </descriptorRefs>
-                <finalName>helloworld</finalName>
+                <finalName>TypeYourWords</finalName>
                 <appendAssemblyId>false</appendAssemblyId>
                 <archive>
                   <manifest>
@@ -107,7 +106,6 @@
                 </execution>
               </executions>
             </plugin>
-            -->
         </plugins>
     </build>
     <name>TypeYourWords</name>
