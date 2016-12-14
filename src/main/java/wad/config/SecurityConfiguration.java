@@ -1,5 +1,7 @@
 package wad.config;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // secretPathPermissions.add("USER");
         
         http.authorizeRequests()
-                .antMatchers("/index").permitAll()
+                .antMatchers("/happypath").permitAll()
                 .antMatchers("/secretpath").hasAnyAuthority("ADMIN,USER")
                 .antMatchers("/adminpath").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated();

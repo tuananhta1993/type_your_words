@@ -1,17 +1,32 @@
 package wad.domain;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import org.springframework.data.jpa.domain.AbstractPersistable;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
-public class Account extends AbstractPersistable<Long> {
-
+@Table(name="Account", schema="public")
+public class Account implements Serializable {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="ID")
+    private Long Id;
+    
     private String username;
     private String password;
-    @ManyToMany(fetch = FetchType.EAGER)
+    
+    @ManyToMany
+    @JoinTable(name="Account_permission")
     private List<Permission> permissions;
 
     public List<Permission> getPermissions() {

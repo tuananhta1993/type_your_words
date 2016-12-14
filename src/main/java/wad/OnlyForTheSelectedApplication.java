@@ -4,8 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TypeYourWordsApplication {
+public class OnlyForTheSelectedApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(TypeYourWordsApplication.class, args);
+        SpringApplication.run(OnlyForTheSelectedApplication.class, args);
     }
 }
