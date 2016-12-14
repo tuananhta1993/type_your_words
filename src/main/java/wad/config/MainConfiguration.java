@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Primary;
 @Configuration
 public class MainConfiguration {
     @Bean
+    @Primary
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
         return (DataSource) DataSourceBuilder.create().build();
