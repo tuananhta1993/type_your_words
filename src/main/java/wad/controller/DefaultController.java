@@ -19,10 +19,10 @@ public class DefaultController {
     @Autowired
     private AuthenticationService authService;
     
-    @PostConstruct
-    public void init() {
-        authService.initDefaultUsers();
-    }
+//    @PostConstruct
+//    public void init() {
+//        authService.initDefaultUsers();
+//    }
 
 //    @RequestMapping("*")
 //    public String handleDefault() {
