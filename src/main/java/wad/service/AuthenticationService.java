@@ -19,13 +19,6 @@ import wad.repository.PermissionRepository;
 
 @Service
 public class AuthenticationService {
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private UserDetailsService userDetailsService;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 
