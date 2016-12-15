@@ -22,17 +22,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // List<String> secretPathPermissions = new ArrayList<>();
-        // secretPathPermissions.add("ADMIN");
-        // secretPathPermissions.add("USER");
-        
         http.authorizeRequests()
-                .antMatchers("/happypath").permitAll()
+                .regexMatchers("^(/index*.|/home*.|/record*.|/*.login*.)$").permitAll()
+                .regexMatchers("^(.*.js|.*.css|.*.png|.*.jpg|.*.jpeg)$").permitAll()
                 .antMatchers("/secretpath").hasAnyAuthority("ADMIN,USER")
-                .antMatchers("/adminpath").hasAnyAuthority("ADMIN")
-                .anyRequest().authenticated();
+                .antMatchers("/adminpath").hasAnyAuthority("ADMIN");
         http.formLogin()
+                .loginPage("/login")
                 .permitAll();
+        http.logout()
+                .permitAll();
+        http.csrf().disable(); 
     }
 
     @Autowired
