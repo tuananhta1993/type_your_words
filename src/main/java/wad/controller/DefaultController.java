@@ -21,8 +21,8 @@ public class DefaultController {
     
     @PostConstruct
     public void init() {
-        // Temporary disable this method. Anh. 15122016
-        // authService.initDefaultUsers();
+         // Temporary disable this method. Anh. 15122016
+         authService.initDefaultUsers();
     }
 
 //    @RequestMapping("*")
