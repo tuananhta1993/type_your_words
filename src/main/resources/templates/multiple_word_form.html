@@ -1,0 +1,69 @@
+<form th:action="@{/words/createmultiple}" id="create-word-multiple-form" method="post">    
+    <div class="modal-dialog container">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Create Words</h4>
+
+                <div class="container">
+
+                    <hr style="height:1px; background-color:black" />
+                    <label><span class="glyphicon glyphicon-info-sign text-danger"> </span></label><small> You can add more than 1 word at the same time. Every word has to be seperated by <strong>comma ","</strong></small>
+
+                </div>
+            </div>
+            <div class="modal-body text-justify background3 container">
+                <!-- Content is here -->
+                <div class="form-group container center-block text-center">
+                    <div class="col-xs-4 text-center">
+                        <h4>Language code</h4>
+                    </div>
+                    <div class="col-xs-8 text-left">
+                        <select name="LangCode" autocomplete="off" class="form-control text-box single-line" data-val="true" data-val-required="The WContext field is required." id="WordDetail_WContext" style="margin-left: auto; margin-right: auto;" type="text" value="">
+                            <option value="en">English</option>
+                            <option value="fi">Suomi</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group container center-block text-center">
+                    <div class="col-xs-4 text-center">
+                        <h4>Input new sequence of words</h4>
+                    </div>
+                    <div class="col-xs-8 text-left">
+                        <textarea id="WordDetail_WContext" name="words_list" class="form-control text-box" rows="3" style="margin-left: auto; margin-right: auto;"></textarea>
+                        <span class="field-validation-valid text-danger" data-valmsg-for="WordDetail.WContext" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <!--End of content-->
+            </div>
+            <div class="modal-footer">
+                <button type="submit" value="" class="btn btn-primary">Create</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $(document).ready(function () {
+        $("#create-word-multiple-form").submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: "/words/createmultiple",
+                type: "POST",
+                data: $('#create-word-multiple-form').serialize(),
+                success: function (data) {
+                    redirect_str = "redirect:/";
+
+                    if (data.indexOf(redirect_str) == 0) {
+                        redirect_url = data.substring(redirect_str.length);
+                        window.location = redirect_url;
+                        console.log("hehee");
+                    } else
+                    {
+                        $(".modalFrame").empty().append(data);
+                    }
+                },
+            });
+        });
+    })
+</script>

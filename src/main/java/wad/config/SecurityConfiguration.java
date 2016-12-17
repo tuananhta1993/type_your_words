@@ -23,16 +23,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .regexMatchers("^(/index*.|/home*.|/record*.|/*.login*.)$").permitAll()
+                .regexMatchers("^(/|/home.*|/record.*)$").permitAll()
                 .regexMatchers("^(.*.js|.*.css|.*.png|.*.jpg|.*.jpeg)$").permitAll()
-                .antMatchers("/secretpath").hasAnyAuthority("ADMIN,USER")
-                .antMatchers("/adminpath").hasAnyAuthority("ADMIN");
+                .regexMatchers("^(/words.*|/wordDetails.*)$").hasAnyAuthority("ADMIN,USER");
         http.formLogin()
                 .loginPage("/login")
                 .permitAll();
         http.logout()
                 .permitAll();
-        http.csrf().disable(); 
+        http.csrf().disable();
     }
 
     @Autowired

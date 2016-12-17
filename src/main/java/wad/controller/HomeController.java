@@ -5,32 +5,28 @@
  */
 package wad.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import wad.domain.Account;
+import wad.domain.Word;
 import wad.repository.AccountRepository;
+import wad.service.WordService;
 
 @Controller
 public class HomeController {
-
+    @Autowired
+    private WordService wordService;
     @Autowired
     private AccountRepository accountRepository;
 
     @RequestMapping("/")
-    public String home(Model model) {
+    public String home(@RequestParam(name="optPrg", required=false) Long optPrg, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("username", auth.getName());
         Boolean isAuthenticated;
@@ -40,9 +36,14 @@ public class HomeController {
         if (isAuthenticated) {
             userID = accountRepository.findByUsername(auth.getName()).getId();
             model.addAttribute("userID", userID);
+            
+            if ((optPrg!=null)&&(optPrg>0)) {
+                List<Word> private_words=new ArrayList();
+                private_words=wordService.findWordsByUsernameLimitedBy(auth.getName(),optPrg);
+                model.addAttribute("private_words", private_words);
+            }
         }
 
-        System.out.println();
         return "index";
     }
 }

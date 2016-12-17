@@ -1,0 +1,54 @@
+
+
+
+<form action="/words/create" id="create-word-form" method="post">    <div class="modal-dialog container">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Create Phrase</h4>
+            </div>
+            <div class="modal-body text-justify background3 container">
+                <!-- Content is here -->
+                <h1>Not yet in production.</h1>
+<!--                <input name="__RequestVerificationToken" type="hidden" value="0rmgMOkhB3VvO4eBftpgm-8lzy_iWLLy54kje0G8XeScx3GAPWXSfGGiEVW9HHLk6tcXIweP1We2omysMqZcbwXaUJgmsGpNPz-TyppxYK4bY5AmNX1MfiLxoTNntIiq0SfYOuuq4yDacbeW6yqM5g2" />
+                
+                <div class="form-group container center-block text-center">
+                    <div class="col-xs-4 text-center">
+                        <h4>Input new phrase</h4>
+                    </div>
+                    <div class="col-xs-8 text-left">
+                        <input autocomplete="off" class="form-control text-box single-line" data-val="true" data-val-required="The WContext field is required." id="WordDetail_WContext" name="WordDetail.WContext" style="margin-left: auto; margin-right: auto;" type="text" value="" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="WordDetail.WContext" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group container center-block text-center">
+                    <div class="col-xs-4 text-center"><h4>Pronounciation (optional)</h4></div>
+                    <div class="col-xs-8 text-left">
+                        <input autocomplete="off" class="form-control text-box single-line" id="WordDetail_WPronounce" name="WordDetail.WPronounce" style="margin-left: auto; margin-right: auto;" type="text" value="" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="WordDetail.WPronounce" data-valmsg-replace="true"></span>
+                    </div>
+                </div>-->
+                <!--End of content-->
+            </div>
+            <div class="modal-footer">
+                <button type="submit" value="" class="btn btn-primary">Create</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $(document).ready(function () {
+        $("#create-word-form").submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: "/words/createphrase",
+                type: "POST",
+            data: $('#create-word-form').serialize(),
+            success: function (data) {
+                $(".modalFrame").empty().append(data);
+            },
+            });
+        });
+    })
+</script>

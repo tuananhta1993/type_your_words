@@ -1,49 +1,49 @@
 <html layout:decorator="layout">
-<div layout:fragment="content">
+    <div layout:fragment="content">
 
-    <!-- Ads -->
-    <div class="container" id="advertisement">
-        <div class="text-center" style="margin-top:30px;">
-            <button type="button" id="skip_fly" class="btn btn-default">skip <span class="glyphicon glyphicon-triangle-right"></span></button>
-        </div>
-        <div id="logo_fly" class="text-center" style="margin-bottom:60px; margin-top:10px;">
-            <span class="glyphicon glyphicon-education hidden-xs" style="font-size:200px;"></span>
-            <span class="glyphicon glyphicon-education visible-xs" style="font-size:100px;"></span>
-        </div>
-        <div id="title_fly" class="text-center" style="margin-bottom:60px; line-height:1.5;">
-            <div id="type_fly" class="col-md-2 col-md-offset-3">
-                <span class="hidden-sm hidden-xs" style="font-size:50px;">TYPE</span>
-                <span class="visible-sm visible-xs" style="font-size:40px;">TYPE</span>
+        <!-- Ads -->
+        <div class="container" id="advertisement">
+            <div class="text-center" style="margin-top:30px;">
+                <button type="button" id="skip_fly" class="btn btn-default">skip <span class="glyphicon glyphicon-triangle-right"></span></button>
             </div>
-            <div id="your_fly" class="col-md-2">
-                <span class="hidden-sm hidden-xs" style="font-size:50px;">YOUR</span>
-                <span class="visible-sm visible-xs" style="font-size:40px;">YOUR</span>
+            <div id="logo_fly" class="text-center" style="margin-bottom:60px; margin-top:10px;">
+                <span class="glyphicon glyphicon-education hidden-xs" style="font-size:200px;"></span>
+                <span class="glyphicon glyphicon-education visible-xs" style="font-size:100px;"></span>
             </div>
-            <div id="words_fly" class="col-md-3">
-                <span class="hidden-sm hidden-xs" style="font-size:50px;">WORDS</span>
-                <span class="visible-sm visible-xs" style="font-size:40px;">WORDS</span>
+            <div id="title_fly" class="text-center" style="margin-bottom:60px; line-height:1.5;">
+                <div id="type_fly" class="col-md-2 col-md-offset-3">
+                    <span class="hidden-sm hidden-xs" style="font-size:50px;">TYPE</span>
+                    <span class="visible-sm visible-xs" style="font-size:40px;">TYPE</span>
+                </div>
+                <div id="your_fly" class="col-md-2">
+                    <span class="hidden-sm hidden-xs" style="font-size:50px;">YOUR</span>
+                    <span class="visible-sm visible-xs" style="font-size:40px;">YOUR</span>
+                </div>
+                <div id="words_fly" class="col-md-3">
+                    <span class="hidden-sm hidden-xs" style="font-size:50px;">WORDS</span>
+                    <span class="visible-sm visible-xs" style="font-size:40px;">WORDS</span>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- End of ads -->
+        <!-- End of ads -->
 
-    <!-- Main content -->
-    <div class="container" id="main_content" style="display: none;">
-        <!--Logo-->
-        <div class="container" style="padding-top:20px;">
-            <div class="col-md-3"></div>
-            <div class="col-md-6 center-block text-center hidden-xs">
-                <img src="/images/logo6_lg.png" style="height:80px;" />
+        <!-- Main content -->
+        <div class="container" id="main_content" style="display: none;">
+            <!--Logo-->
+            <div class="container" style="padding-top:20px;">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 center-block text-center hidden-xs">
+                    <img src="/images/logo6_lg.png" style="height:80px;" />
+                </div>
+                <div class="col-md-3"></div>
             </div>
-            <div class="col-md-3"></div>
-        </div>
-        <hr class="hidden-xs"/>
-        <!-- Main tabs-->
-        <div class="container" style="background: linear-gradient(to bottom, #fff 60%, #f2f2f2 80%);">
-            <div class="row">
-                <!-- OPTION -->
-                <div class="col-sm-3 text-center center-block">
-                    <h3>Use your words?</h3>
+            <hr class="hidden-xs"/>
+            <!-- Main tabs-->
+            <div class="container" style="background: linear-gradient(to bottom, #fff 60%, #f2f2f2 80%);">
+                <div class="row">
+                    <!-- OPTION -->
+                    <div class="col-sm-3 text-center center-block">
+                        <h3>Use your words?</h3>
                         <!--
                             Modal button
                         -->
@@ -59,20 +59,21 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                         <h4 class="modal-title" id="myModalLabel">Program Option</h4>
                                     </div>
+                                    <!-- input skip advertisement option -->
+                                    <input name="skp_ad" th:attr="value = ${param.skp_ad}" hidden=""/>
+
                                     <div class="modal-body text-justify">
                                         <form method="get" id="optForm">
-                                            <!-- input skip advertisement option -->
-                                            <input name="skp_ad" th:attr="value = ${param.skp_ad}" hidden=""/>
 
                                             <h4><span class="text-info">Default Words</span></h4>
                                             <div>
-                                                <h6><input type="radio" name="optPrg" value="1_pb" class="sbmOpt"/> Top 200 common words</h6>
+                                                <h6><input type="radio" name="optPrg" value="200" class="sbmOpt"/> Top 200 common words</h6>
                                             </div>
                                             <div>
-                                                <h6><input type="radio" name="optPrg" value="2_pb" class="sbmOpt"/> Top 500 common words</h6>
+                                                <h6><input type="radio" name="optPrg" value="500" class="sbmOpt"/> Top 500 common words</h6>
                                             </div>
                                             <div>
-                                                <h6><input type="radio" name="optPrg" value="3_pb" class="sbmOpt"/> Top 1000 common words</h6>
+                                                <h6><input type="radio" name="optPrg" value="1000" class="sbmOpt"/> Top 1000 common words</h6>
                                             </div>
                                         </form>
                                     </div>
@@ -116,7 +117,7 @@
                 <div class="col-md-3">
 
                 </div>
-                
+
                 <!-- Wrapper -->
                 <div th:if="${isAuthenticated==false}">
                     <!-- Public record -->
@@ -141,7 +142,7 @@
                         </table>
                     </div>
                 </div>
-                
+
                 <!-- Wrapper -->
                 <div th:if="${isAuthenticated==true}">
                     <!-- Private record -->
@@ -166,7 +167,7 @@
                         </table>
                     </div>
                 </div>
-                
+
                 <div class="col-md-3">
 
                 </div>
@@ -178,5 +179,9 @@
                 <input type="submit"/>
             </form>
         </div>
+        <div id="privated_selected_words_list" style="display:none"> 
+            <span th:each="word : ${private_words}" th:text="${word.Content}" class="selected-word"></span>
+        </div>
+        <!--End of content-->
     </div>
-    </html>
+</html>

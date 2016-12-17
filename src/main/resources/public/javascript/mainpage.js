@@ -51,6 +51,19 @@ $(function () {
         update_records_table(account_id);
     }
     ;
+    
+    // words page:
+    if ($("#words_table_body").length) {
+        order=0;
+        $(".word-row").each(function(){
+            order++;
+            $(this).find(".word-order").html(order+".");
+        })
+    }
+    
+    if ($(".definition-row").length) {
+        $("#no_definition_row").hide();
+    }
 })
 
 format = function date2str(x, y) {

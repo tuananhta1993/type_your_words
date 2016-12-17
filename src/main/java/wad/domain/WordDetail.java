@@ -6,8 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="WordDetail",schema="public")
@@ -17,12 +20,16 @@ public class WordDetail implements Serializable {
     @Column(name="ID")
     private Long Id;
     
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name="word_id")
     private Word word;
     
-    private String Content;
-    private String Pronounce;
+    private String wType;
+    
+    @NotBlank
+    @Length(min = 1, max =100)
     private String Definition;
+     
     private String Example;
 
     public Long getId() {
@@ -48,29 +55,21 @@ public class WordDetail implements Serializable {
     public void setExample(String Example) {
         this.Example = Example;
     }
-
-    public String getContent() {
-        return Content;
-    }
-
-    public void setContent(String Content) {
-        this.Content = Content;
-    }
-
-    public String getPronounce() {
-        return Pronounce;
-    }
-
-    public void setPronounce(String Pronounce) {
-        this.Pronounce = Pronounce;
-    }
-
+    
     public String getDefinition() {
         return Definition;
     }
 
     public void setDefinition(String Definition) {
         this.Definition = Definition;
+    }
+
+    public String getwType() {
+        return wType;
+    }
+
+    public void setwType(String wType) {
+        this.wType = wType;
     }
     
     
