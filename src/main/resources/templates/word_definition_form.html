@@ -1,0 +1,94 @@
+    <!--<input name="wordId" th:attr="value=${word.Id}" />-->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add definition</h4>
+            </div>
+            <div class="container">
+                <!--<h2 class="text-primary" th:text="${word.Content}"></h2>-->
+            </div>
+            <form method="post" id="create_def_form" th:action="@{/wordDetails/create}" th:object="${wordDetail}">
+            <div class="modal-body text-justify background3 container">                
+                <div class="form-horizontal container">
+                    <div class="form-group text-center container">
+                        <div class="col-md-4 text-center">
+                            <h4>Word type</h4>
+                        </div>
+                        <div class="col-md-8 text-center">
+                            <select th:field="*{wType}" id="wType" class="form-control center-block">
+                                <option value="n">noun</option>
+                                <option value="v">verb</option>
+                                <option value="adj">adjective</option>
+                                <option value="adv">adverb</option>
+                                <option value="pro">pronoun</option>
+                                <option value="prep">preposition</option>
+                                <option value="conj">conjunction</option>
+                                <option value="det">determiner</option>
+                                <option value="excl">exclamation</option>
+                                <option value="phrase">phrase</option>
+                                <option value="">-empty-</option>
+                            </select>                            
+                            <span class="field-validation-valid text-danger" data-valmsg-for="wType" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center container">
+                        <div class="col-md-4 text-center">
+                            <h4>Definition</h4>
+                        </div>
+                        <div class="col-md-8">
+                            <input th:field="*{Definition}" class="form-control center-block text-box single-line" data-val="true" data-val-required="This field can not be empty." id="wDefinition" type="text" value="" />
+                            <span th:if="${#fields.hasErrors('Definition')}" th:errors="*{Definition}" class="field-validation-valid text-danger" data-valmsg-for="wDefinition" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center container">
+                        <div class="col-md-4 text-center">
+                            <h4>Example</h4>
+                        </div>
+                        <div class="col-md-8">
+                            <input th:field="*{Example}" class="form-control center-block text-box single-line" id="wExample" type="text" value="" />
+                            <span th:if="${#fields.hasErrors('Example')}" th:errors="*{Example}" class="field-validation-valid text-danger" data-valmsg-for="wExample" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+        </div>
+    </div>
+
+
+
+<script>
+    $(document).ready(function () {
+        current_word_id=$("input[name='wordId']").val();
+        
+        $("#create_def_form").submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: '/wordDetails/create/'+current_word_id,
+                type: "POST",
+                data: $('#create_def_form').serialize(),
+                success: function (data) {
+                    redirect_str="redirect:";
+                    
+                    if (data.indexOf(redirect_str)==0) {
+                        redirect_url=data.substring(redirect_str.length);
+                        window.location=redirect_url;
+                        console.log("hehee");
+                    }else
+                    {
+                        $(".modalFrame").empty().append(data);
+                    }
+                    
+                },
+            });
+        });
+    })
+</script>

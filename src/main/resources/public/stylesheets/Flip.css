@@ -1,0 +1,152 @@
+﻿/*.card-grid {
+    width: 320px;
+    height: 180px;
+    margin: 15px;
+}*/
+div.morris-hover {
+    cursor:pointer;
+}
+
+#grid-containter .flip {
+    display: inline-block;
+}
+
+.margin-top {
+    margin: 10px;
+}
+
+.margin-btn {
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.margin-top-bottom {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+/* FLASH COLORS
+    1. FLASH DEFAULT YELLOW
+
+    
+    box-shadow: 6px 18px 23px -9px rgba(184,178,123,1);
+    
+    box-shadow: -12px 17px 32px -4px rgba(184,178,123,1);
+*/
+.flash-default-front {
+    cursor: pointer;
+    background-color:#fffd8b;
+}
+
+.flash-default-back {
+    cursor: pointer;
+    background: #efee8a;
+}
+
+/* FLASH GREEN */
+
+.flash-green-front {
+    cursor: pointer;
+    background: #90ea89;
+}
+
+.flash-green-back {
+    cursor: pointer;
+    background: #a8f1a2;
+}
+
+/* PINK FLASH */
+
+.flash-pink-front {
+    cursor: pointer;
+    background: #f8adf8;
+}
+
+.flash-pink-back {
+    cursor: pointer;
+    background: #fab3fa;
+}
+
+/* BLUE FLASH */
+
+.flash-blue-front {
+    cursor: pointer;
+    background: #7ed2ef;
+}
+
+.flash-blue-back {
+    cursor: pointer;
+    background: #9bd0f3;
+}
+
+/*
+        SMALL BUTTON ON THE CARDS
+    */
+.btn-flash {
+    padding: 17px;
+    border-radius: 50%;
+    border: 2px groove red;
+    margin: 2px;
+}
+
+    .btn-flash:hover {
+        border: 2px solid black;
+        opacity: 0.5;
+    }
+
+.btn-flash-default {
+    background: #f5f582;
+}
+
+.btn-flash-green {
+    background: #2ce8a3;
+}
+
+.btn-flash-pink {
+    background: #ffd9f3;
+}
+
+.btn-flash-blue {
+    background: #89cafb;
+}
+/*
+        FIXED POSITION FOR THE HEADER
+    */
+.header-fixed {
+    background: #ebd5bf;
+    background-image: -webkit-linear-gradient(top, #ebd5bf, #f2dbc2);
+    background-image: -moz-linear-gradient(top, #ebd5bf, #f2dbc2);
+    background-image: -ms-linear-gradient(top, #ebd5bf, #f2dbc2);
+    background-image: -o-linear-gradient(top, #ebd5bf, #f2dbc2);
+    background-image: linear-gradient(to bottom, #ebd5bf, #f2dbc2);
+    opacity: 1;
+    border-bottom: 1px solid black;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+/* Graph */
+rect{
+    cursor:pointer;
+} 
+
+.change_slide:hover {
+    background: #e8ebed;
+  background-image: -webkit-linear-gradient(top, #e8ebed, #d8e1e6);
+  background-image: -moz-linear-gradient(top, #e8ebed, #d8e1e6);
+  background-image: -ms-linear-gradient(top, #e8ebed, #d8e1e6);
+  background-image: -o-linear-gradient(top, #e8ebed, #d8e1e6);
+  background-image: linear-gradient(to bottom, #e8ebed, #d8e1e6);
+}
+
+#grid-containter {
+    border:15px ridge #808080;
+}
+
+#grid-body {
+    background-repeat:no-repeat; 
+    background-size:100% 100%; 
+    overflow:scroll; 
+    overflow-x:hidden; 
+    width:100%;
+}
