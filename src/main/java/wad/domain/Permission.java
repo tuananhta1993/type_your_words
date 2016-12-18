@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="Permission", schema="public")
@@ -37,7 +39,9 @@ public class Permission implements Serializable {
     public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
     }
-
+    
+    @NotBlank
+    @Column(unique = true)
     private String name;
     
     @ManyToMany(mappedBy="permissions", fetch=FetchType.EAGER)
