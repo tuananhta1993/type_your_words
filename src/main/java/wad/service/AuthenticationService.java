@@ -86,7 +86,7 @@ public class AuthenticationService {
     }
 
     public Account registerNewAccount(Account account) {
-        Permission pUSER = permissionRepository.findByName("admin");
+        Permission pUSER = permissionRepository.findByName("USER");
 
         account.setPassword(passwordEncoder.encode(account.getPassword()));
 
