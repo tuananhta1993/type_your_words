@@ -1,7 +1,2 @@
-# Package Files #
-*.jar
-*.war
-*.ear
-
-src/main/resources/application.properties
-target/
+# ignore the target directory
+target
