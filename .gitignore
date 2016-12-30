@@ -1,2 +1,7 @@
-/src/main/resources/application.properties
-/target/
+# Package Files #
+*.jar
+*.war
+*.ear
+
+src/main/resources/application.properties
+target/
