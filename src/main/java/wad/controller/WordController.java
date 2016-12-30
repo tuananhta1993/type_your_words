@@ -57,7 +57,7 @@ public class WordController {
 
         return "words";
     }
-
+    
     @RequestMapping(value = "/words", method = RequestMethod.POST)
     public String save_words(@Valid
             @ModelAttribute Word word,
