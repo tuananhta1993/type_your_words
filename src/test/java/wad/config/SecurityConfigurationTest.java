@@ -43,14 +43,6 @@ public class SecurityConfigurationTest extends FluentTest {
         assertThat(pageSource()).contains("Login");
     }
     
-    @Test
-    public void userCanSeeWordsPathAfterLogin() throws Throwable {
-        goTo("http://localhost:" + port + "/words");
-        assertThat(pageSource()).doesNotContain("Words List");
-        enterDetailsAndSubmit("user", "user");
-        assertThat(pageSource()).contains("Words List");
-    }
-    
     private void enterDetailsAndSubmit(String username, String password) {
         fill(find(By.name("username"))).with(username);
         fill(find(By.name("password"))).with(password);

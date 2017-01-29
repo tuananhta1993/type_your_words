@@ -23,7 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .regexMatchers("^(/|/home.*|/record.*)$").permitAll()
+                .regexMatchers("^(/|/calendar.*|/reservations.*|/record.*)$").permitAll()
                 .regexMatchers("^(.*.js|.*.css|.*.png|.*.jpg|.*.jpeg)$").permitAll()
                 .regexMatchers("^(/words.*|/wordDetails.*)$").hasAnyAuthority("ADMIN,USER");
         http.formLogin()

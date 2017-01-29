@@ -1,191 +1,46 @@
 <html layout:decorator="layout">
     <div layout:fragment="content">
+        <style>
+            .center:hover {
+                cursor:pointer;
+            }
+        </style>
+        <center class='center' onclick="window.location='/calendar'">
+            <div style="padding-top:50px;">
+                <span style="font-size:50px;" class="glyphicon glyphicon-calendar"></span>
+            </div>
+            <div style="padding:30px; margin:30px;">
+                <span style="font-size:50px;" >Reservation Calendar</span>
+            </div>
+        </center>
+        <hr/>
+        <div class="col-md-6 col-md-offset-3">
+            <ol>
+                <li>
+                    <b>How does it work?</b><br/><br/>
+                    <ul>
+                        <li>Everyone can see the reservation calendar.</li>
+                        <li>Only authenticated user is allowed to create/ delete the reservation.</li>
+                        <li>After reserve a time in the calendar, authorized user will receive the confirmation messages via the registered phone, and email.</li>
+                    </ul>
+                    <br/>
+                    <br/>
+                </li>
+                <li>
+                    
+                    <b>Event's color convention:</b><br/>
+                    <ul>
+                        <li>
+                            <img src="/images/your_reservation.png" style="width:150px; padding:20px" /> : Your reservation
+                        </li>
+                        <li>
+                            <img src="/images/others_reservation.png" style="width:150px; padding:20px" /> : Other's reservation
+                        </li>
+                    </ul>
 
-        <!-- Ads -->
-        <div class="container" id="advertisement">
-            <div class="text-center" style="margin-top:30px;">
-                <button type="button" id="skip_fly" class="btn btn-default">skip <span class="glyphicon glyphicon-triangle-right"></span></button>
-            </div>
-            <div id="logo_fly" class="text-center" style="margin-bottom:60px; margin-top:10px;">
-                <span class="glyphicon glyphicon-education hidden-xs" style="font-size:200px;"></span>
-                <span class="glyphicon glyphicon-education visible-xs" style="font-size:100px;"></span>
-            </div>
-            <div id="title_fly" class="text-center" style="margin-bottom:60px; line-height:1.5;">
-                <div id="type_fly" class="col-md-2 col-md-offset-3">
-                    <span class="hidden-sm hidden-xs" style="font-size:50px;">TYPE</span>
-                    <span class="visible-sm visible-xs" style="font-size:40px;">TYPE</span>
-                </div>
-                <div id="your_fly" class="col-md-2">
-                    <span class="hidden-sm hidden-xs" style="font-size:50px;">YOUR</span>
-                    <span class="visible-sm visible-xs" style="font-size:40px;">YOUR</span>
-                </div>
-                <div id="words_fly" class="col-md-3">
-                    <span class="hidden-sm hidden-xs" style="font-size:50px;">WORDS</span>
-                    <span class="visible-sm visible-xs" style="font-size:40px;">WORDS</span>
-                </div>
-            </div>
+                </li>
+            </ol>
+
         </div>
-        <!-- End of ads -->
-
-        <!-- Main content -->
-        <div class="container" id="main_content" style="display: none;">
-            <!--Logo-->
-            <div class="container" style="padding-top:20px;">
-                <div class="col-md-3"></div>
-                <div class="col-md-6 center-block text-center hidden-xs">
-                    <img src="/images/logo6_lg.png" style="height:80px;" />
-                </div>
-                <div class="col-md-3"></div>
-            </div>
-            <hr class="hidden-xs"/>
-            <!-- Main tabs-->
-            <div class="container" style="background: linear-gradient(to bottom, #fff 60%, #f2f2f2 80%);">
-                <div class="row">
-                    <!-- OPTION -->
-                    <div class="col-sm-3 text-center center-block">
-                        <h3 th:if="${isAuthenticated==false}"></h3>
-                        <div th:if="${isAuthenticated==true}">
-                            <h3>Use your words?</h3>
-                            <br />
-                        <div class="btn btn-primary refresh-btn" data-toggle="modal" data-target="#optionPrg" id="opt-btn">
-                            <span style="margin-bottom:0px; padding-top:0px; font-size:16px;">Try now <span class="glyphicon glyphicon-step-forward"></span></span>
-                        </div>
-                            <!--
-                            Modal button
-                        -->
-                        
-                        <!-- Modal -->
-                        <div class="modal fade" id="optionPrg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Program Option</h4>
-                                    </div>
-                                    <!-- input skip advertisement option -->
-                                    <input name="skp_ad" th:attr="value = ${param.skp_ad}" hidden=""/>
-
-                                    <div class="modal-body text-justify">
-                                        <form method="get" id="optForm">
-
-                                            <h4><span class="text-info">Default Words</span></h4>
-                                            <div>
-                                                <h6><input type="radio" name="optPrg" value="200" class="sbmOpt"/> Top 200 common words</h6>
-                                            </div>
-                                            <div>
-                                                <h6><input type="radio" name="optPrg" value="500" class="sbmOpt"/> Top 500 common words</h6>
-                                            </div>
-                                            <div>
-                                                <h6><input type="radio" name="optPrg" value="1000" class="sbmOpt"/> Top 1000 common words</h6>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-
-                    <!-- COUNT TIME -->
-                    <br />
-                    <div class="col-sm-3 col-sm-push-6 center-block text-center">
-                        <h3 class="hidden-xs">Remaining seconds</h3>
-                        <span class="btn btn-default btn-lg disabled" style="padding-top: 10px;">
-                            <span class="text-danger" style="font-size:40px" id="mins">00 :</span>
-                            <span class="text-danger" style="font-size:40px" id="seconds"></span>
-                        </span>
-                    </div>
-
-                    <!-- GIVEN BOX -->
-                    <div class="col-sm-6 col-sm-pull-3 center-block text-center" style="padding-bottom:30px;">
-                        <div id="given" class="form-inline table-bordered"></div>
-                        <div class="text-center text-success" style="margin-top:20px; margin-bottom:20px;">
-                            <b id="greetings">
-                            </b>
-                        </div>
-                        <div class="text-center center-block">
-                            <input type="text" id="typed" name="typed" size="50" class="form-inline img-rounded table-bordered" autocomplete="off" autofocus="true"/>
-                            <button type="button" class="btn btn-danger" aria-label="Left Align" onclick="window.location = '?skp_ad=on';" id="refresh-btn">
-                                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-                                Restart
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="container" style="background: linear-gradient(to bottom, #fff 60%, #f2f2f2 80%);">
-                <div class="col-md-3">
-
-                </div>
-
-                <!-- Wrapper -->
-                <div th:if="${isAuthenticated==false}">
-                    <!-- Public record -->
-                    <div class="col-md-6" id="publicRecord">
-                        <h3>Top 10 honours</h3>
-                        <table class="table text-center">
-                            <thead>
-                                <tr class="text-center">
-                                    <th></th>
-                                    <th class="text-center">
-                                        WPM
-                                    </th>
-                                    <th class="text-center">User</th>
-                                    <th class="text-center">
-                                        Created
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="records_tbl_body">
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Wrapper -->
-                <div th:if="${isAuthenticated==true}">
-                    <!-- Private record -->
-                    <div class="col-md-6" id="privateRecord">
-                        <h3>Last 10 records</h3>
-                        <table class="table text-center">
-                            <thead>
-                                <tr class="text-center">
-                                    <th></th>
-                                    <th class="text-center">
-                                        WPM
-                                    </th>
-                                    <th class="text-center">User</th>
-                                    <th class="text-center">
-                                        Created
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="records_tbl_body">
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-
-                </div>
-            </div>
-            <form hidden="hidden" id="resultSbm" method="post">
-                <input type="text" name="account" th:attr="value = ${userID}" />
-                <input type="text" name="pri_rec" value="false" id="pri_rec"/>
-                <input type="text" name="wpm" id="wpm"/>
-                <input type="submit"/>
-            </form>
-        </div>
-        <div id="privated_selected_words_list" style="display:none"> 
-            <span th:each="word : ${private_words}" th:text="${word.Content}" class="selected-word"></span>
-        </div>
-        <!--End of content-->
     </div>
 </html>

@@ -14,14 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import wad.domain.Word;
 import wad.repository.AccountRepository;
-import wad.service.WordService;
 
 @Controller
 public class HomeController {
-    @Autowired
-    private WordService wordService;
     @Autowired
     private AccountRepository accountRepository;
 
@@ -38,9 +34,9 @@ public class HomeController {
             model.addAttribute("userID", userID);
             
             if ((optPrg!=null)&&(optPrg>0)) {
-                List<Word> private_words=new ArrayList();
-                private_words=wordService.findWordsByUsernameLimitedBy(auth.getName(),optPrg);
-                model.addAttribute("private_words", private_words);
+                // List<Word> private_words=new ArrayList();
+                // private_words=wordService.findWordsByUsernameLimitedBy(auth.getName(),optPrg);
+                // model.addAttribute("private_words", private_words);
             }
         }
 

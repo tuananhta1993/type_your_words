@@ -75,7 +75,8 @@ public class AuthenticationService {
             Account user3 = new Account();
             user3.setUsername("user");
             user3.setPassword(passwordEncoder.encode("user"));
-            user3.setEmail("mb@tatuananh.com");
+            user3.setEmail("mail@tatuananh.com");
+            user3.setPhone("046964478");
 
             List<Permission> permissions3 = new ArrayList<>();
             permissions3.add(pADMIN);

@@ -1,0 +1,115 @@
+<html layout:decorator="layout">
+    <div layout:fragment="content">
+        <style>
+            .input-date {
+                width:120px !important;
+            }
+
+            .input-time {
+                width:80px !important;
+            }
+
+            .space {
+                padding:10px;
+            }
+        </style>
+        <div id="wrapper" >
+            <div id="page-wrapper" class="gray-bg dontprint scrollable">
+                <center>
+                    <h1>Reservation Calendar</h1>
+                </center>
+
+                <hr/><br/>
+                <div id="content_scroll">
+                    <div class="wrapper wrapper-content">
+                        <div class="row row-wrapper">
+                            <div class="alert-box">
+                                <div class="alert alert-success" id="lopetus_update_success" style="display:none"></div>
+                            </div>
+
+                            <div style="align:center;">
+                                <div id='calendar' style="width:90%; padding-left:5%;"></div>
+                                <!--Display event form-->
+                                <div id="event_edit_container" style="display:none;">
+                                    <form id="event_edit_form">
+                                        <input type="hidden" />
+                                        <ul>
+                                            <li>
+                                                <label for="date"><b>Start Time</b></label>
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <input class="input-date" name="start_date" type="text" />
+                                                        </td>
+                                                        <td class="space"> - </td>
+                                                        <td>
+                                                            <input class="input-time" name="start_time" type="text" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                            <li>
+                                                <label for="start"><b>End Time:</b></label>
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <input class="input-date" name="end_date" type="text" />
+                                                        </td>
+                                                        <td class="space"> - </td>
+                                                        <td>
+                                                            <input class="input-time" name="end_time" type="text" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                            <li>
+                                                <label for="title"><b>Customer:</b></label>
+                                                <span name="customer"></span> 
+                                            </li>
+                                            <li style="display:none">
+                                                <label>Your reservation can be publish?</label>
+                                                <div><input type="radio" name="isPublic" style="width:20px;" value="yes" onchange="trigger_is_public('yes')"/> Yes</div>
+                                                <div><input type="radio" name="isPublic" style="width:20px;" value="no" checked="checked" onchange="trigger_is_public('no')"/> No</div>
+                                                <div style="display:none">
+                                                    <input name="isPublicText" value="no" />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label for="title2"><b>Purpose:</b></label>
+                                                <textarea name="subject" rows="2"></textarea>
+                                            </li>
+                                        </ul>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span style="display:none" id="username" th:text="${username}">username</span>
+                    <script>
+                        var current_date = new Date()
+                        var timezone_offset = current_date.getTimezoneOffset();
+                        var time_diff = timezone_offset/(-60);
+                    </script>
+                    <script th:if="${isAuthenticated==true}">
+                        var isAuthenticated = true;
+                        var customer_name = $("#username").html();
+                    </script>
+                    <script th:if="${isAuthenticated==false}">
+                        var isAuthenticated = false;
+                        var customer_name = "";
+                    </script>
+
+                    <link rel='stylesheet' type='text/css' href='/stylesheets/jquery-ui-1.8.11.custom.css' />
+                    <link rel='stylesheet' type='text/css' href='/stylesheets/jquery.weekcalendar.css' />
+                    <link rel='stylesheet' type='text/css' href='/stylesheets/demo.css' />
+
+                    <link rel='stylesheet' type='text/css' href='/stylesheets/default.css' />
+                    <script type="text/javascript" src="/javascript/date.js"></script>
+                    <script type='text/javascript' src='/javascript/jquery.weekcalendar.js'></script>
+                    <script type='text/javascript' src='/javascript/demo.js'></script>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>

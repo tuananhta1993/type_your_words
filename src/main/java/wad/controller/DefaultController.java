@@ -25,8 +25,8 @@ public class DefaultController {
         authService.initDefaultUsers();
     }
 
-//    @RequestMapping("*")
-//    public String handleDefault() {
-//        return "redirect:/home";
-//    }
+    @RequestMapping("*")
+    public String handleDefault() {
+        return "redirect:/reservations";
+    }
 }

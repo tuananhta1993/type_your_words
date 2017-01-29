@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="manager">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <!--<link rel="icon" href="../../favicon.ico"/>-->
+
+        <title>TYW</title>
+        <link rel="shortcut icon" href="/images/logo6.PNG" />
+
+        <!-- Bootstrap core CSS -->
+        <link href="/stylesheets/modernizr.css" rel="stylesheet" />
+        <link href="/stylesheets/main.css" rel="stylesheet" />
+        <link href="/stylesheets/Flip.css" rel="stylesheet" />
+        <link href="/stylesheets/bootstrap_datetimepicker.css" rel="stylesheet" />
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css" />
+    </head>
+    <body>
+        <div class="container">
+            <!-- HEADER -->
+            <div id="header_layout" class="navbar navbar-default navbar-fixed-top" style="background-color:#656565; padding-left: 20px; padding-right: 20px;">
+                <div class="container">
+                    <div class="col-md-2 hidden-xs center-block text-center">
+                        <a href="/" style="color:#ffffff; font-size:30px;"><span class="glyphicon glyphicon-education" style="top: 5px;"></span></a>
+                    </div>
+                    <div>
+                        <div class="navbar-header">
+                            <div class="row" style="display: -webkit-box;">
+                                <a href="/" class="visible-xs-block" style="color:#ffffff; position:fixed; right:5%; top:5px;"><img src="/images/logo6_xs.png" style="height:60px;" /></a>
+
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="position: relative; right: 0;">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="text-center"><span class="navbar-text"><a href="/?skp_ad=on">Home</a> </span></li>
+                                <li th:if="${isAuthenticated==true}" class="text-center"><span class="navbar-text"><a href="/words">Words</a> </span></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <li th:if="${isAuthenticated==false}">
+                                    <a id="register-btn1" style="cursor:pointer" href="/register"><span class="glyphicon glyphicon-user"></span> Register</a>
+                                </li>
+                                <li th:if="${isAuthenticated==false}">
+                                    <a id="login-btn1" style="cursor:pointer" href="/login"><span class=" glyphicon glyphicon-log-in">
+                                        </span> Log in</a>
+                                </li>
+
+                                <li th:if="${isAuthenticated==true}" class="text-center">
+                                    <form method="get" action="/words">
+                                        <span class="btn-group btn-group-xs navbar-text" style="margin-top:8px; margin-right:30px;">
+                                            <input name="s_word" autocomplete="off" class="btn btn-xs" placeholder="Find words" style="width:200px; height:95%; cursor:text; padding: 3px;" type="text" maxlength="50" />
+                                            <button type="submit" class="btn btn-default btn-xs" onclick="$('#searchWord').submit()"><span style="font-size:14px; margin:1.5px; margin-left:10px; margin-right:10px;" class="glyphicon glyphicon-search"></span></button>
+                                        </span>
+                                    </form>
+                                </li>
+                                <li th:if="${isAuthenticated==true}" class="text-center center-block">
+                                    <a href="/Manage"><span class="glyphicon glyphicon-user"></span> <span th:text="${username}">username</span></a>
+                                </li>
+                                <li th:if="${isAuthenticated==true}">
+                                    <a id="logout-btn1" style="cursor:pointer" href="/logout"><span class=" glyphicon glyphicon-log-out">
+                                        </span> Log out</a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container hidden-md hidden-lg" style="margin:20px;">
+            </div>
+            <div class="container">
+                <!-- MAIN CONTENT HERE!!! -->
+                <div layout:fragment="content">
+                    <!-- ============================================================================ -->
+                    <!-- This content is only used for static prototyping purposes (natural templates)-->
+                    <!-- and is therefore entirely optional.                                          -->
+                    <!-- ============================================================================ -->
+                    <h1>Static content for prototyping purposes only</h1>
+
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
+                        Phasellus et placerat elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
+                        Phasellus et placerat elit.
+                    </p>
+
+                </div>
+                <!-- END OF MAIN CONTENT -->
+            </div>
+            <!-- /.container -->
+
+        </div>
+        <hr />
+
+        <!--FOOTER-->
+        <footer class="text-center">
+            <div class="col-md-6 col-md-push-6 text-center">
+                <div class="container">
+                    <div class="col-md-7">
+                        <ol>
+                            <li>
+                                <span class="text-center" style="margin-right:15px;"><a style="color:#808080; font-size:14px;" href="/resources/pdf/user_guide.pdf">How does this work?</a></span>
+                            </li>
+                            <li>
+                                <span class="text-center" style="margin-right:15px;"><a style="color:#808080; font-size:14px;" href="/resources/pdf/documentation.pdf">Tech documentation</a></span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-md-pull-5 text-center container">
+                <hr class="visible-sm visible-xs" style="margin-top:15px;"/>
+                <div class="container">
+                    <div>
+                        <span style="color:#808080; font-size:14px;">© 2016 - Type Your Words</span>
+                    </div>
+                    <span class="text-muted" style="font-size:13px; margin-left:20px">Ta Tuan Anh, Helsinki, Finland </span>
+                </div>
+                <div>
+                    <center style="padding-top:20px;padding-bottom:20px">
+                        <span><a href=""><img src="/images/email.png" class="icon_social"/></a></span>
+                        <span><a href=""><img src="/images/linkedin.png" class="icon_social"/></a></span>
+                        <span><a href=""><img src="/images/github.png" class="icon_social"/></a></span>
+                    </center>
+                </div>
+            </div>
+        </footer>
+
+        <script src="/javascript/jquery.bundle.js"></script>
+        <script src="/javascript/bootstrap.bundle.js"></script>
+
+        <script src="/javascript/moment.js"></script>
+        <!-- bootstrap date time picker -->
+        <script src="/javascript/bootstrap-datetimepicker.js"></script>
+        <script src="/javascript/bootstrap-datetimepicker.min.js"></script>
+        <script src="/javascript/_dateTimePicker.js"></script>
+        <script src="/javascript/jquery.flip.js"></script>
+        <script src="/javascript/_flashCards.js"></script>
+
+        <!-- home page -->
+        <script>
+                                                $(function () {
+                                                    if ($(".selected-word").length) {
+                                                        msg = new Array();
+                                                        $(".selected-word").each(function () {
+                                                            msg.push($(this).html());
+                                                        });
+                                                    } else
+                                                    {
+                                                        msg = new Array("the", "be", "of", "and", "a", "to", "in", "he", "have", "it", "that", "for", "they", "I", "with", "as", "not", "on", "she", "at", "by", "this", "we", "you", "do", "but", "from", "or", "which", "one", "would", "all", "will", "there", "say", "who", "make", "when", "can", "more", "if", "no", "man", "out", "other", "so", "what", "time", "up", "go", "about", "than", "into", "could", "state", "only", "new", "year", "some", "take", "come", "these", "know", "see", "use", "get", "like", "then", "first", "any", "work", "now", "may", "such", "give", "over", "think", "most", "even", "find", "day", "also", "after", "way", "many", "must", "look", "before", "great", "back", "through", "long", "where", "much", "should", "well", "people", "down", "own", "just", "because", "good", "each", "those", "feel", "seem", "how", "high", "too", "place", "little", "world", "very", "still", "nation", "hand", "old", "life", "tell", "write", "become", "here", "show", "house", "both", "between", "need", "mean", "call", "develop", "under", "last", "right", "move", "thing", "general", "school", "never", "same", "another", "begin", "while", "number", "part", "turn", "real", "leave", "might", "want", "point", "form", "off", "child", "few", "small", "since", "against", "ask", "late", "home", "interest", "large", "person", "end", "open", "public", "follow", "during", "present", "without", "again", "hold", "govern", "around", "possible", "head", "consider", "word", "program", "problem", "however", "lead", "system", "set", "order", "eye", "plan", "run", "keep", "face", "fact", "group", "play", "stand", "increase", "early", "course", "change", "help", "line");
+                                                    }
+                                                })
+
+        </script>
+        <script src="/javascript/_typingTest.js" type="text/javascript"></script>
+        <script src="/javascript/mainpage.js" type="text/javascript"></script>
+
+        <script th:if="${isAuthenticated==true}">
+                                                function submit_record()
+                                                {
+                                                    console.log("This function is called.");
+
+                                                    var date = format(new Date(), 'yyyy-MM-dd');
+                                                    var account_id = $("input[name='account']").val();
+                                                    var words_per_min = $("input[name='wpm']").val();
+
+                                                    var account_href = "/api/accounts/" + account_id;
+                                                    var JSONObject = "{\"account\":\"" + account_href + "\",\"wpm\":\"" + words_per_min + "\",\"isPublic\":\"false\",\"createdDate\":\"" + date + "\"}";
+
+                                                    var jsonData = JSON.parse(JSONObject);
+
+                                                    var request = $.ajax({
+                                                        url: "/api/records",
+                                                        type: "POST",
+                                                        contentType: 'application/json',
+                                                        data: JSONObject,
+                                                        dataType: "json",
+                                                        success: function (data)
+                                                        {
+                                                            update_records_table(account_id);
+                                                        },
+                                                        error: function () {
+                                                            alert("error");
+                                                        }
+                                                    })
+                                                }
+        </script>
+        <script th:if="${isAuthenticated==false}" type="text/javascript">
+            function submit_record()
+            {
+                var date = format(new Date(), 'yyyy-MM-dd');
+                var words_per_min = $("input[name='wpm']").val();
+
+                var JSONObject = "{\"wpm\":\"" + words_per_min + "\",\"isPublic\":\"true\",\"createdDate\":\"" + date + "\"}";
+
+                var jsonData = JSON.parse(JSONObject);
+
+                var request = $.ajax({
+                    url: "/api/records",
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: JSONObject,
+                    dataType: "json",
+                    success: function (data)
+                    {
+                        update_records_table();
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                })
+            }
+        </script>
+        <script>
+            $(document).ready(function () {
+                skip_ad = $("input[name='skp_ad']").val();
+                console.log(skip_ad);
+
+                if (skip_ad === "") {
+                    $('#logo_fly').fadeOut(0);
+                    $('#type_fly').fadeOut(0);
+                    $('#your_fly').fadeOut(0);
+                    $('#words_fly').fadeOut(0);
+
+                    $('#logo_fly').slideDown(2000);
+                    $('#type_fly').delay(1000).slideUp(1000).fadeIn(2000);
+                    $('#your_fly').delay(2000).slideUp(1000).fadeIn(2000);
+                    $('#words_fly').delay(3000).slideUp(1000).fadeIn(2000);
+
+                    $('#advertisement').delay(6000).slideUp(600).fadeOut(200);
+                    $('#main_content').delay(7000).fadeIn(1000);
+
+                    $('#skip_fly').click(function () {
+                        $('#logo_fly').clearQueue();
+                        $('#type_fly').clearQueue();
+                        $('#your_fly').clearQueue();
+                        $('#words_fly').clearQueue();
+
+                        $('#advertisement').hide();
+                        $('#main_content').show();
+                        //$('#main_content').slideDown(600).fadeIn(200);
+                    })
+                } else {
+                    $('#advertisement').hide();
+                    $('#main_content').show();
+                }
+
+            })
+        </script>
+        <script src="/javascript/_modals.js" type="text/javascript"></script>
+    </body>
+</html>

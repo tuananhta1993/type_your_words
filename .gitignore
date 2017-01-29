@@ -1,5 +1,2 @@
 # ignore the target directory
 target
-
-# don't commit Procfile to the server, it's already there
-Procfile

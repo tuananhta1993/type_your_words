@@ -41,6 +41,8 @@ public class Account implements Serializable {
     @NotBlank
     @Length(min = 3, max =50)
     private String email;
+
+    private String phone;
     
     @Length(min = 0, max =50)
     private String hometown;
@@ -50,33 +52,30 @@ public class Account implements Serializable {
     private List<Permission> permissions;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    private List<Word> words;
+    private List<Reservation> reservations;
 
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    private List<Record> records;
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
 
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    
     public Long getId() {
         return Id;
     }
 
     public void setId(Long Id) {
         this.Id = Id;
-    }
-
-    public List<Word> getWords() {
-        return words;
-    }
-
-    public void setWords(List<Word> words) {
-        this.words = words;
-    }
-
-    public List<Record> getRecords() {
-        return records;
-    }
-
-    public void setRecords(List<Record> records) {
-        this.records = records;
     }
 
     public List<Permission> getPermissions() {

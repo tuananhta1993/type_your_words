@@ -9,23 +9,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import wad.domain.Account;
-import wad.domain.Word;
 import wad.repository.AccountRepository;
-import wad.repository.WordRepository;
 
 @Service
 public class PublicService {
-    @Autowired
-    WordRepository wordRepository;
     
     @Autowired
     AccountRepository accountRepository;
     
-    public List<Word> findDefaultWords()
-    {
-        String admin="Admin";
-        Account adminAccount;
-        adminAccount=accountRepository.findByUsername(admin);
-        return wordRepository.findWordsByAccount(adminAccount);
-    }
+    // public List<Word> findDefaultWords()
+    // {
+    //    String admin="Admin";
+    //    Account adminAccount;
+    //    adminAccount=accountRepository.findByUsername(admin);
+    //    return wordRepository.findWordsByAccount(adminAccount);
+    // }
 }
