@@ -43,17 +43,14 @@
                 <div class="row">
                     <!-- OPTION -->
                     <div class="col-sm-3 text-center center-block">
-                        <h3 th:if="${isAuthenticated==false}"></h3>
-                        <div th:if="${isAuthenticated==true}">
-                            <h3>Use your words?</h3>
-                            <br />
+                        <h3>Use your words?</h3>
+                        <!--
+                            Modal button
+                        -->
+                        <br />
                         <div class="btn btn-primary refresh-btn" data-toggle="modal" data-target="#optionPrg" id="opt-btn">
                             <span style="margin-bottom:0px; padding-top:0px; font-size:16px;">Try now <span class="glyphicon glyphicon-step-forward"></span></span>
                         </div>
-                            <!--
-                            Modal button
-                        -->
-                        
                         <!-- Modal -->
                         <div class="modal fade" id="optionPrg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -85,7 +82,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                     </div>
 
