@@ -1,11 +1,11 @@
-# type_your_words
+type_your_words
+
 App written in Java
 
-Reservation calendar
-Ta Tuan Anh
+University of Helsinki Final project Ta Tuan Anh
 
 Demo user:
-- Username: demo
-- Password: demo
 
-App URL: http://tatuananh.com:8888
+Username: demo
+Password: demo
+App URL: http://typeyourwords.herokuapp.com
