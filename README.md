@@ -1,4 +1,4 @@
-# type_your_words
+# Type your words
 App written in Java
 
 University of Helsinki
